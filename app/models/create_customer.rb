@@ -1,2 +1,0 @@
-class CreateCustomer < ApplicationRecord
-end
