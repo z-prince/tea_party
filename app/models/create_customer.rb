@@ -1,0 +1,2 @@
+class CreateCustomer < ApplicationRecord
+end
