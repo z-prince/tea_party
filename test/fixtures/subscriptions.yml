@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titel: MyString
+  price: 1
+  status: false
+  frequency: 1
+
+two:
+  titel: MyString
+  price: 1
+  status: false
+  frequency: 1
