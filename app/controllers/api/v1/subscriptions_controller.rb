@@ -14,7 +14,7 @@ module Api
         customer_id = subscription_params[:customer_id]
         subscription_id = subscription_params[:subscription_id]
         cust_sub = CustomerSubscription.find_cust_sub(customer_id, subscription_id)
-        CustomerSubscription.update(status: false)
+        cust_sub.update(status: false)
       end
 
       private
