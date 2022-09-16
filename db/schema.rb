@@ -10,54 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_13_123838) do
-
+ActiveRecord::Schema.define(version: 20_220_916_122_831) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "customer_subscriptions", force: :cascade do |t|
-    t.bigint "customer_id"
-    t.bigint "subscription_id"
-    t.index ["customer_id"], name: "index_customer_subscriptions_on_customer_id"
-    t.index ["subscription_id"], name: "index_customer_subscriptions_on_subscription_id"
+  create_table 'customer_subscriptions', force: :cascade do |t|
+    t.bigint 'customer_id'
+    t.bigint 'subscription_id'
+    t.boolean 'status'
+    t.index ['customer_id'], name: 'index_customer_subscriptions_on_customer_id'
+    t.index ['subscription_id'], name: 'index_customer_subscriptions_on_subscription_id'
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'customers', force: :cascade do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'email'
+    t.string 'address'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.string "title"
-    t.integer "price"
-    t.boolean "status"
-    t.integer "frequency"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'subscriptions', force: :cascade do |t|
+    t.string 'title'
+    t.integer 'price'
+    t.integer 'frequency'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "tea_subscriptions", force: :cascade do |t|
-    t.bigint "tea_id"
-    t.bigint "subscription_id"
-    t.index ["subscription_id"], name: "index_tea_subscriptions_on_subscription_id"
-    t.index ["tea_id"], name: "index_tea_subscriptions_on_tea_id"
+  create_table 'tea_subscriptions', force: :cascade do |t|
+    t.bigint 'tea_id'
+    t.bigint 'subscription_id'
+    t.index ['subscription_id'], name: 'index_tea_subscriptions_on_subscription_id'
+    t.index ['tea_id'], name: 'index_tea_subscriptions_on_tea_id'
   end
 
-  create_table "teas", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.string "temperature"
-    t.string "brew_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'teas', force: :cascade do |t|
+    t.string 'title'
+    t.string 'description'
+    t.string 'temperature'
+    t.string 'brew_time'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "customer_subscriptions", "customers"
-  add_foreign_key "customer_subscriptions", "subscriptions"
-  add_foreign_key "tea_subscriptions", "subscriptions"
-  add_foreign_key "tea_subscriptions", "teas"
+  add_foreign_key 'customer_subscriptions', 'customers'
+  add_foreign_key 'customer_subscriptions', 'subscriptions'
+  add_foreign_key 'tea_subscriptions', 'subscriptions'
+  add_foreign_key 'tea_subscriptions', 'teas'
 end

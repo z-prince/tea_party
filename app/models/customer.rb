@@ -6,4 +6,12 @@ class Customer < ApplicationRecord
 
   has_many :customer_subscriptions
   has_many :subscriptions, through: :customer_subscriptions
+
+  def active_subscriptions
+    subscriptions.where(customer_subscriptions: { status: true })
+  end
+
+  def inactive_subscriptions
+    subscriptions.where(customer_subscriptions: { status: false })
+  end
 end
